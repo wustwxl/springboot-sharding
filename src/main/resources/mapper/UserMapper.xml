@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wust.sharding.mapper.UserMapper" >
+    <resultMap id="BaseResultMap" type="com.wust.sharding.entity.User" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <id column="user_id" property="userId" jdbcType="INTEGER" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="pwd" property="pwd" jdbcType="VARCHAR" />
+        <result column="phone" property="phone" jdbcType="VARCHAR" />
+        <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="age" property="age" jdbcType="INTEGER" />
+        <result column="sex" property="sex" jdbcType="INTEGER" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+        <result column="access_token" property="accessToken" jdbcType="VARCHAR" />
+        <result column="refresh_token" property="refreshToken" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+        <result column="version" property="version" jdbcType="INTEGER" />
+        <result column="deleted" property="deleted" jdbcType="INTEGER" />
+    </resultMap>
+
+    <insert id="insert" parameterType="com.wust.sharding.entity.User" >
+    insert into user_info (user_id, username, pwd,
+      phone, email, age,
+      sex, access_token,
+      refresh_token)
+    values (#{userId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR},
+      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER},
+      #{sex,jdbcType=INTEGER}, #{accessToken,jdbcType=VARCHAR},
+      #{refreshToken,jdbcType=VARCHAR})
+  </insert>
+
+</mapper>

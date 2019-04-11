@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wust.sharding.mapper.OrderDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.wust.sharding.entity.OrderDetail" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="amount" property="amount" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_id, goods_id, amount, price
+  </sql>
+
+  <select id="getOrderDetails" resultMap="BaseResultMap"  >
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM order_detail
+  </select>
+
+  <insert id="insert" parameterType="com.wust.sharding.entity.OrderDetail" >
+    INSERT INTO
+    order_detail
+    (order_id, goods_id, amount, price)
+    VALUES
+    (#{orderId,jdbcType=INTEGER},#{goodsId,jdbcType=INTEGER},#{amount,jdbcType=INTEGER},#{price,jdbcType=INTEGER})
+  </insert>
+
+</mapper>
